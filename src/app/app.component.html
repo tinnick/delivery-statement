@@ -1,13 +1,24 @@
 <p>Start editing to see some magic happen :)</p>
 
 <svg class="nohinsho" width="100" [attr.height]="messages.length * 24">
-  <text
-    *ngFor="let message of messages; let index = index"
-    class="nohinsho--row"
-    x="0"
-    [attr.y]="(index + 1) * 24 - 4"
-    fill="#000"
-  >
-    {{ message }}
-  </text>
+  <ng-container *ngFor="let message of messages; let index = index">
+    <text
+      class="nohinsho__row--text"
+      x="0"
+      [attr.y]="(index + 1) * 24 - 4"
+      fill="#000"
+    >
+      {{ message }}
+    </text>
+
+    <rect cass="nohinsho__row--border"
+      width="100"
+      height="24"
+      x="0"
+      [attr.y]="index * 24"
+      fill="none"
+      stroke="#000">
+    </rect>
+  </ng-container>
+
 </svg>
