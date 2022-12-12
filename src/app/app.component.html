@@ -81,25 +81,3 @@
     <text dx="-12" y="460" class="fs-24 bold">{{ 1923012 | number }}</text>
   </g>
 </svg>
-
-<svg class="nohinsho" width="100" [attr.height]="messages.length * 24">
-  <ng-container *ngFor="let message of messages; let index = index">
-    <text
-      class="nohinsho__row--text"
-      x="0"
-      [attr.y]="(index + 1) * 24 - 4"
-      fill="#000"
-    >
-      {{ message }}
-    </text>
-
-    <rect cass="nohinsho__row--border"
-      width="100"
-      height="24"
-      x="0"
-      [attr.y]="index * 24"
-      fill="none"
-      stroke="#000" />
-  </ng-container>
-
-</svg>
