@@ -23,16 +23,22 @@
     .cl-gray {
       color: #7A7A7B;
     }
+
+    .space-10 {
+      letter-spacing: 10px;
+    }
   </style>
 
   <g class="header">
-    <text x="675" y="100" class="fs-24 bold">納品書</text>
+    <text x="675" y="100" class="fs-24 bold space-10">
+      納品書
+    </text>
 
     <rect x="700" y="142" width="40" height="4" fill="#000" />
   </g>
 
   <g class="customer-information">
-    <rect x="135" y="100" width="400" height="260" fill="none" stroke="#000"/>
+    <rect x="135" y="100" width="400" height="260" fill="none" stroke="#000" />
 
     <text x="160" y="138" class="fs-18 bold">{{ customer.name }}</text>
     <text x="160" Y="174" class="fs-16">{{ customer.zipcode }}</text>
@@ -46,20 +52,31 @@
   <text x="135" y="416" class="fs-16">下記の通り納品いたします。</text>
 
   <g class="meta">
-    <path d="M908,100 h396 v32 h-396 v-32 m100,0 v32, M908,136 h396 v32 h-396 v-32 m100,0 v32, M908,172 h396 v32 h-396 v-32 m100,0 v32" stroke="#000" fill="none"></path>
+    <path
+      d="M908,100 h396 v32 h-396 v-32 m100,0 v32, M908,136 h396 v32 h-396 v-32 m100,0 v32, M908,172 h396 v32 h-396 v-32 m100,0 v32"
+      stroke="#000"
+      fill="none"
+    ></path>
 
     <text x="926" y="120" class="fs-14 bold">納品書番号</text>
     <text x="1024" y="120" class="fs-14"></text>
 
     <text x="926" y="156" class="fs-14 bold">発行日</text>
-    <text x="1024" y="156"i class="fs-14"></text>
+    <text x="1024" y="156" i class="fs-14"></text>
 
     <text x="926" y="192" class="fs-14 bold">注文日</text>
     <text x="1024" y="192" class="fs-14">{{ orderDate }}</text>
   </g>
 
   <g class="shop-information">
-    <rect x="908" y="216" width="396" height="290" fill="#ffea4b" stroke="none" />
+    <rect
+      x="908"
+      y="216"
+      width="396"
+      height="290"
+      fill="#ffea4b"
+      stroke="none"
+    />
 
     <text x="926" y="250" class="fs-18 bold">{{ customer.name }}</text>
     <text x="926" Y="286" class="fs-16">{{ customer.zipcode }}</text>
@@ -73,9 +90,19 @@
   <g class="total">
     <text x="135" y="486" class="fs-18 bold">金額合計</text>
 
-    <rect x="234" y="448" width="640" height="60" rx="20" fill="#F4F4F7" stroke="none" />
+    <rect
+      x="234"
+      y="448"
+      width="640"
+      height="60"
+      rx="20"
+      fill="#F4F4F7"
+      stroke="none"
+    />
 
     <text x="810" y="484" class="fs-16">(税込)</text>
-    <text [attr.x]="798 - totalValueLength" y="484" class="fs-24 bold">{{ totalValue }}</text>
+    <text [attr.x]="798 - totalValueLength" y="484" class="fs-24 bold">
+      {{ totalValue }}
+    </text>
   </g>
 </svg>
