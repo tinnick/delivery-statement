@@ -1,4 +1,10 @@
-<svg width="1440" height="2037" viewBox="0 0 1440 2037">
+<svg
+  #PDFContent
+  xmlns="http://www.w3.org/2000/svg"
+  width="1440"
+  height="2037"
+  viewBox="0 0 1440 2037"
+>
   <style>
     .bold {
       font-weight: 700;
@@ -30,9 +36,7 @@
   </style>
 
   <g class="header">
-    <text x="675" y="100" class="fs-24 bold space-10">
-      納品書
-    </text>
+    <text x="675" y="100" class="fs-24 bold space-10">納品書</text>
 
     <rect x="700" y="142" width="40" height="4" fill="#000" />
   </g>
@@ -106,3 +110,9 @@
     </text>
   </g>
 </svg>
+
+<img *ngIf="image" [src]="image" alt="" />
+
+<canvas #canvas></canvas>
+
+<button (click)="downloadPDF(PDFContent, canvas)">pdf download</button>

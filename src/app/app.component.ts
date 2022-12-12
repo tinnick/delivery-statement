@@ -16,8 +16,8 @@ type Item = {
 export class AppComponent {
   public readonly A4AspectRatio = {
     x: 1,
-    y: Math.SQRT2
-  }
+    y: Math.SQRT2,
+  };
 
   public readonly A4DPI = 300; // this is the bare minimum for printing: https://www.makeuseof.com/dpi-settings-for-digital-photos/
 
@@ -26,21 +26,27 @@ export class AppComponent {
     zipcode: '〒107-0061',
     country: '日本',
     addressLine1: '東京都港区北青山1丁目4-5',
-    addressLine2: 'VORT青山一丁目 Dual\'s 301',
+    addressLine2: "VORT青山一丁目 Dual's 301",
     phone: '+81-080-4321-1234',
-    email: 'taniavon@mail.com'
+    email: 'taniavon@mail.com',
   };
 
-  public readonly orderDate = Intl.DateTimeFormat('ja', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date());
+  public readonly orderDate = Intl.DateTimeFormat('ja', {
+    year: '2-digit',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date());
 
   public readonly shop = {
     name: 'Shop ABC',
     zipcode: '〒107-0061',
     country: '日本',
     addressLine1: '東京都港区北青山1丁目4-5',
-    addressLine2: 'VORT青山一丁目 Dual\'s 301',
+    addressLine2: "VORT青山一丁目 Dual's 301",
     phone: '+81-080-4321-1234',
-    email: 'taniavon@mail.com'
+    email: 'taniavon@mail.com',
   };
 
   public readonly itemsHeader = [
@@ -49,7 +55,7 @@ export class AppComponent {
     '数量',
     '単価',
     '送料',
-    '金額(税込)'
+    '金額(税込)',
   ];
 
   public readonly items: Item[] = [
@@ -59,11 +65,13 @@ export class AppComponent {
       quantity: 1,
       price: 10000,
       shippingFee: 750,
-    }
+    },
   ];
 
   public readonly totalValue = '¥11,825';
   public readonly totalValueLength: number;
+
+  public image?: string;
 
   private readonly inchInPixels = 96;
 
@@ -85,5 +93,27 @@ export class AppComponent {
     context.font = 'bold 24px/1 sans-serif';
 
     this.totalValueLength = context.measureText(this.totalValue).width;
+  }
+
+  public downloadPDF(svg: HTMLElement, canvas: HTMLCanvasElement): void {
+    const blob = new Blob([svg.outerHTML], {
+      type: 'image/svg+xml;charset=utf-8',
+    });
+
+    const url = URL.createObjectURL(blob);
+    const image = document.createElement('img');
+
+    image.addEventListener('load', () => {
+      URL.revokeObjectURL(url);
+
+      this.image = image.src;
+      
+      const context = canvas.getContext('2d');
+      context.drawImage(image, 1000, 1000);
+    }, {
+      once: true,
+    });
+
+    image.src = url;
   }
 }
