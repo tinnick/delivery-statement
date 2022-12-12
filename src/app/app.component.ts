@@ -82,6 +82,7 @@ export class AppComponent {
   constructor() {
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     const context: CanvasRenderingContext2D = canvas.getContext('2d');
+    context.font = 'bold 24px';
 
     this.totalValueLength = context.measureText(this.totalValue).width;
   }
