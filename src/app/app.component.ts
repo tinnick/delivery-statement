@@ -62,6 +62,9 @@ export class AppComponent {
     }
   ];
 
+  public readonly totalValue = '¥11,825';
+  public readonly totalValueLength: number;
+
   private readonly inchInPixels = 96;
 
   public get viewBox(): string {
@@ -74,5 +77,12 @@ export class AppComponent {
 
   private get height(): number {
     return Math.round(this.inchInPixels * this.A4DPI * this.A4AspectRatio.y);
+  }
+
+  constructor() {
+    const canvas: HTMLCanvasElement = document.createElement('canvas');
+    const context: CanvasRenderingContext2D = canvas.getContext('2d');
+
+    this.totalValueLength = context.measureText(this.totalValue).width;
   }
 }
